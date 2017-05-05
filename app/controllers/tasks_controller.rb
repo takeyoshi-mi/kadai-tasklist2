@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_tasks, only: [:show, :edit, :update, :destroy]
+  before_action :require_user_logged_in
+  before_action :current_user, only: [:destroy]
 
   def index
     @tasks = Task.order(created_at: :desc).page(params[:page]).per(3)
@@ -13,7 +15,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @tasks = Task.new(tasks_params)
+    
+    @tasks = current_user.task.build(tasks_params)
 
     if @tasks.save
       flash[:success] = 'タスクが正常に投稿されました'
@@ -22,6 +25,8 @@ class TasksController < ApplicationController
       flash.now[:danger] = 'タスクが投稿されませんでした'
       render :new
     end
+    
+    
   end
 
   def edit
