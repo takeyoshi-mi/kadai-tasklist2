@@ -1,0 +1,23 @@
+<% if @tasks.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>ステータス</th>
+        <th>タスク</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |tasks| %>
+        <tr>
+          <td><%= link_to tasks.id, tasks %></td>
+          <td><%= tasks.status %></td>
+          <td><%= tasks.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @tasks %>
+  </div>
+<% end %>

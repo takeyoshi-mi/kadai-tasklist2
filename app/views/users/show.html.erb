@@ -13,6 +13,6 @@
     <ul class="nav nav-tab nav-justified">
       <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>タスク一覧 <span class="badge"><%= @count_microposts %></span><% end %></li>
     </ul>
-    <%= render 'tasks/tasks', microposts: @tasks, user: @user %>
+    <%= render 'tasks/tasks', タスク: @tasks, ユーザー: @user %>
   </div>
 </div>
