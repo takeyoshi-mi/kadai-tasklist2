@@ -1,7 +1,7 @@
 <% if logged_in? %>
   <div class="row">
     <div class="col-xs-8">
-      <%= render 'tasks/form', tasks: @tasks, user: @user %>
+      <%= render 'tasks/tasks', task: @tasks %>
     </div>
   </div>
 <% else %>
